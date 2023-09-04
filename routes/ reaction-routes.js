@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User, Thought } = require("../models");
 
-// GET all users
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find();
@@ -11,7 +10,6 @@ router.get("/users", async (req, res) => {
   }
 });
 
-// GET user by ID
 router.get("/users/:userId", async (req, res) => {
   try {
     const user = await User.findById(req.params.userId)
@@ -29,7 +27,6 @@ router.get("/users/:userId", async (req, res) => {
   }
 });
 
-// POST new user
 router.post("/users", async (req, res) => {
   try {
     const user = await User.create(req.body);
@@ -39,7 +36,6 @@ router.post("/users", async (req, res) => {
   }
 });
 
-// PUT update user by ID
 router.put("/users/:userId", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.userId, req.body, {
@@ -51,7 +47,6 @@ router.put("/users/:userId", async (req, res) => {
   }
 });
 
-// DELETE user by ID
 router.delete("/users/:userId", async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.userId);
@@ -61,7 +56,6 @@ router.delete("/users/:userId", async (req, res) => {
       return;
     }
 
-    // Delete the user's associated thoughts
     await Thought.deleteMany({ username: user.username });
 
     res.json({ message: "User and associated thoughts deleted" });

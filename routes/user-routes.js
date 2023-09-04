@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { Thought } = require("../models");
 
-// POST new reaction to thought
 router.post("/thoughts/:thoughtId/reactions", async (req, res) => {
   try {
     const thought = await Thought.findById(req.params.thoughtId);
@@ -11,7 +10,6 @@ router.post("/thoughts/:thoughtId/reactions", async (req, res) => {
       return;
     }
 
-    // Add the new reaction to the thought's reactions array
     thought.reactions.push(req.body);
     await thought.save();
 
@@ -21,7 +19,6 @@ router.post("/thoughts/:thoughtId/reactions", async (req, res) => {
   }
 });
 
-// DELETE reaction by ID from thought
 router.delete(
   "/thoughts/:thoughtId/reactions/:reactionId",
   async (req, res) => {
@@ -33,7 +30,6 @@ router.delete(
         return;
       }
 
-      // Find the index of the reaction to be removed
       const reactionIndex = thought.reactions.findIndex(
         (reaction) => reaction._id.toString() === req.params.reactionId
       );
@@ -43,7 +39,6 @@ router.delete(
         return;
       }
 
-      // Remove the reaction from the reactions array
       thought.reactions.splice(reactionIndex, 1);
       await thought.save();
 

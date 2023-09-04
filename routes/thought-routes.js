@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { Thought, User } = require("../models");
 
-// GET all thoughts
 router.get("/thoughts", async (req, res) => {
   try {
     const thoughts = await Thought.find();
@@ -11,7 +10,6 @@ router.get("/thoughts", async (req, res) => {
   }
 });
 
-// GET thought by ID
 router.get("/thoughts/:thoughtId", async (req, res) => {
   try {
     const thought = await Thought.findById(req.params.thoughtId);
@@ -21,12 +19,10 @@ router.get("/thoughts/:thoughtId", async (req, res) => {
   }
 });
 
-// POST new thought
 router.post("/thoughts", async (req, res) => {
   try {
     const thought = await Thought.create(req.body);
 
-    // Push the thought's _id to the associated user's thoughts array
     await User.findByIdAndUpdate(thought.username, {
       $push: { thoughts: thought._id },
     });
@@ -37,7 +33,6 @@ router.post("/thoughts", async (req, res) => {
   }
 });
 
-// PUT update thought by ID
 router.put("/thoughts/:thoughtId", async (req, res) => {
   try {
     const thought = await Thought.findByIdAndUpdate(
@@ -51,7 +46,6 @@ router.put("/thoughts/:thoughtId", async (req, res) => {
   }
 });
 
-// DELETE thought by ID
 router.delete("/thoughts/:thoughtId", async (req, res) => {
   try {
     const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
@@ -61,7 +55,6 @@ router.delete("/thoughts/:thoughtId", async (req, res) => {
       return;
     }
 
-    // Remove the thought's _id from the associated user's thoughts array
     await User.findByIdAndUpdate(thought.username, {
       $pull: { thoughts: thought._id },
     });
