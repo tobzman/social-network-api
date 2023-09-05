@@ -1,7 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const User = require("./models/User");
-const Thought = require("./models/Thought");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,7 +12,7 @@ mongoose.connect("mongodb://localhost/socialnetwork", {
 });
 
 // Define your API routes here
-
+app.use(routes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
