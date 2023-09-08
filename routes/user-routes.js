@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { Thought } = require("../models");
 
 router.post("/thoughts/:thoughtId/reactions", async (req, res) => {
   try {
