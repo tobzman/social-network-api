@@ -1,5 +1,5 @@
 const { Reaction, Thought } = require("../models");
-
+const { Types } = require("mongoose");
 const reactionController = {
   // Get all reactions
   getAllReactions: async (req, res) => {
