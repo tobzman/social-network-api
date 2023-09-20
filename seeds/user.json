@@ -1,0 +1,42 @@
+[
+  {
+    "userId": "john_doe",
+    "username": "john_doe",
+    "email": "john.doe@example.com",
+    "friends": ["jane_smith", "alex_jones"],
+    "thoughts": ["1", "2"],
+    "createdAt": "2023-08-24T09:00:00Z"
+  },
+  {
+    "userId": "jane_smith",
+    "username": "jane_smith",
+    "email": "jane.smith@example.com",
+    "friends": ["john_doe", "alex_jones"],
+    "thoughts": ["3"],
+    "createdAt": "2023-08-24T09:30:00Z"
+  },
+  {
+    "userId": "alex_jones",
+    "username": "alex_jones",
+    "email": "alex.jones@example.com",
+    "friends": ["john_doe", "jane_smith"],
+    "thoughts": ["4"],
+    "createdAt": "2023-08-24T10:15:00Z"
+  },
+  {
+    "userId": "emily_brown",
+    "username": "emily_brown",
+    "email": "emily.brown@example.com",
+    "friends": [],
+    "thoughts": [],
+    "createdAt": "2023-08-25T11:45:00Z"
+  },
+  {
+    "userId": "michael_clark",
+    "username": "michael_clark",
+    "email": "michael.clark@example.com",
+    "friends": [],
+    "thoughts": [],
+    "createdAt": "2023-08-26T14:20:00Z"
+  }
+]

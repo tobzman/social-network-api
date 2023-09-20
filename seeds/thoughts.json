@@ -1,0 +1,62 @@
+[
+  {
+    "thoughtId": "1",
+    "thoughtText": "Just had the most amazing meal!",
+    "createdAt": "2023-08-24T10:00:00Z",
+    "username": "john_doe",
+    "reactions": [
+      {
+        "reactionId": "101",
+        "reactionBody": "That sounds delicious!",
+        "username": "jane_smith",
+        "createdAt": "2023-08-24T10:30:00Z"
+      },
+      {
+        "reactionId": "102",
+        "reactionBody": "I'm so jealous!",
+        "username": "alex_jones",
+        "createdAt": "2023-08-24T11:15:00Z"
+      }
+    ]
+  },
+  {
+    "thoughtId": "2",
+    "thoughtText": "Just finished a great book!",
+    "createdAt": "2023-08-25T15:45:00Z",
+    "username": "jane_smith",
+    "reactions": [
+      {
+        "reactionId": "201",
+        "reactionBody": "What book was it?",
+        "username": "john_doe",
+        "createdAt": "2023-08-25T16:00:00Z"
+      },
+      {
+        "reactionId": "202",
+        "reactionBody": "I love reading too!",
+        "username": "alex_jones",
+        "createdAt": "2023-08-25T16:30:00Z"
+      }
+    ]
+  },
+  {
+    "thoughtId": "3",
+    "thoughtText": "Just returned from an amazing vacation!",
+    "createdAt": "2023-08-26T08:00:00Z",
+    "username": "alex_jones",
+    "reactions": [
+      {
+        "reactionId": "301",
+        "reactionBody": "Where did you go?",
+        "username": "jane_smith",
+        "createdAt": "2023-08-26T08:30:00Z"
+      },
+      {
+        "reactionId": "302",
+        "reactionBody": "I need a vacation too!",
+        "username": "michael_clark",
+        "createdAt": "2023-08-26T09:15:00Z"
+      }
+    ]
+  }
+]

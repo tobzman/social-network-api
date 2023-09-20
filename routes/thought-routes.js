@@ -1,68 +1,33 @@
 const router = require("express").Router();
-const { Thought, User } = require("../models");
+const {
+  getAllThoughts,
+  getThoughtById,
+  createThought,
+  updateThought,
+  deleteThought,
+  createReaction,
+  deleteReaction,
+} = require("../controllers/thought-controller");
 
-router.get("/thoughts", async (req, res) => {
-  try {
-    const thoughts = await Thought.find();
-    res.json(thoughts);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// Get all thoughts
+router.get("/thoughts", getAllThoughts);
 
-router.get("/thoughts/:thoughtId", async (req, res) => {
-  try {
-    const thought = await Thought.findById(req.params.thoughtId);
-    res.json(thought);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// Get a thought by ID
+router.get("/thoughts/:thoughtId", getThoughtById);
 
-router.post("/thoughts", async (req, res) => {
-  try {
-    const thought = await Thought.create(req.body);
+// Create a new thought
+router.post("/thoughts", createThought);
 
-    await User.findByIdAndUpdate(thought.username, {
-      $push: { thoughts: thought._id },
-    });
+// Update a thought by ID
+router.put("/thoughts/:thoughtId", updateThought);
 
-    res.json(thought);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// Delete a thought by ID
+router.delete("/thoughts/:thoughtId", deleteThought);
 
-router.put("/thoughts/:thoughtId", async (req, res) => {
-  try {
-    const thought = await Thought.findByIdAndUpdate(
-      req.params.thoughtId,
-      req.body,
-      { new: true }
-    );
-    res.json(thought);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// Create a reaction for a thought
+router.post("/thoughts/:thoughtId/reactions", createReaction);
 
-router.delete("/thoughts/:thoughtId", async (req, res) => {
-  try {
-    const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
-
-    if (!thought) {
-      res.status(404).json({ message: "Thought not found" });
-      return;
-    }
-
-    await User.findByIdAndUpdate(thought.username, {
-      $pull: { thoughts: thought._id },
-    });
-
-    res.json({ message: "Thought deleted" });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// Delete a reaction for a thought
+router.delete("/thoughts/:thoughtId/reactions/:reactionId", deleteReaction);
 
 module.exports = router;
